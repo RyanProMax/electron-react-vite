@@ -2,19 +2,21 @@
   "name": "electron-react-vite",
   "private": true,
   "version": "0.0.0",
-  "main": "main/index.js",
+  "main": "build/main/index.cjs",
   "scripts": {
-    "start": "electron .",
-    "start-renderer": "vite",
+    "start": "node scripts/watch.mjs",
     "preview": "vite preview",
-    "build": "vite build && node ./scripts/afterBuild.js",
-    "build:x86": "npm run clean && electron-builder -w --ia32 -c ./build.config.json",
-    "build:x64": "npm run clean && electron-builder -w --x64 -c ./build.config.json",
-    "build:mac": "npm run clean && electron-builder --mac -c ./build.config.json",
-    "clean": "node ./scripts/cleanBuildDir.js"
+    "build": "node scripts/build.mjs",
+    "pack": "npm run build && npm run build:x64",
+    "pack:x86": "electron-builder -w --ia32 -c ./build.config.json",
+    "pack:x64": "electron-builder -w --x64 -c ./build.config.json",
+    "pack:mac": "electron-builder --mac -c ./build.config.json"
+  },
+  "dependencies": {
+    "electron-store": "^8.0.1"
   },
   "devDependencies": {
-    "@ryanpromax/eslint-config": "^0.0.3",
+    "@ryanpromax/eslint-config": "^0.0.5",
     "@vitejs/plugin-react": "^1.0.7",
     "cross-env": "^7.0.3",
     "electron": "^17.1.0",
@@ -23,6 +25,12 @@
     "fs-extra": "^10.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "vite": "^2.8.0"
+    "vite": "^2.8.0",
+    "vite-plugin-esmodule": "^1.0.1",
+    "vite-plugin-imp": "^2.1.6"
+  },
+  "env": {
+    "VITE_DEV_SERVER_HOST": "127.0.0.1",
+    "VITE_DEV_SERVER_PORT": 9527
   }
 }

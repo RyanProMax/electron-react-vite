@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import { CHANNEL_NAME } from '../../../global/constant';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,17 @@ function App() {
             count is:
             {' '}
             {count}
+          </button>
+          <button
+            type="button"
+            onClick={() => window.electron.ipcRenderer.invoke(CHANNEL_NAME.INIT_SUB_WINDOW, {
+              name: 'aboutWindow',
+              page: 'about',
+              message: { type: 'data', data: 'hello, sub window' }
+            })}
+            style={{ marginLeft: 10 }}
+          >
+            open sub window
           </button>
         </p>
         <p>
