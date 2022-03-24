@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@ryanpromax/eslint-config": "^0.0.5",
-    "@ryanpromax/vite-plugin-transfer-mpa": "^0.0.2",
+    "@ryanpromax/vite-plugin-transfer-mpa": "^0.0.5",
     "@vitejs/plugin-react": "^1.0.7",
     "cross-env": "^7.0.3",
     "electron": "^17.1.0",
