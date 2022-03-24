@@ -2,12 +2,13 @@
   "name": "electron-react-vite",
   "private": true,
   "version": "0.0.0",
+  "author": "Ryan",
   "main": "build/main/index.cjs",
   "scripts": {
     "start": "node scripts/watch.mjs",
     "preview": "vite preview",
     "build": "node scripts/build.mjs",
-    "pack": "npm run build && npm run build:x64",
+    "pack": "npm run build && npm run pack:x64",
     "pack:x86": "electron-builder -w --ia32 -c ./build.config.json",
     "pack:x64": "electron-builder -w --x64 -c ./build.config.json",
     "pack:mac": "electron-builder --mac -c ./build.config.json"
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@ryanpromax/eslint-config": "^0.0.5",
+    "@ryanpromax/vite-plugin-transfer-mpa": "^0.0.2",
     "@vitejs/plugin-react": "^1.0.7",
     "cross-env": "^7.0.3",
     "electron": "^17.1.0",
@@ -32,5 +34,6 @@
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
     "VITE_DEV_SERVER_PORT": 9527
-  }
+  },
+  "license": "MIT"
 }
